@@ -6,12 +6,26 @@ using System.Threading.Tasks;
 
 namespace Tennis
 {
-    abstract class Player
+    class Player1
+
     {
-        public abstract int WonServes(int value);
 
-        public abstract int WonSets(int value);
+        int value { get; set; }
 
-        public abstract int WonGames(int value);
+        public int WonServe(int value)
+        {
+            return value + 10;
+            
+        }
+
+        public int WonSets(int value)
+        {
+            return value += 1;
+        }
+
+        public int WonGames(int value)
+        {
+            return value += 1;
+        }
     }
 }
