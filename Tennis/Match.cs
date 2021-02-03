@@ -15,7 +15,7 @@ namespace Tennis
 
         public int Serve()
         {
-            int serveScore = randomNumber.Next(0, 1);
+            int serveScore = randomNumber.Next(0, 2);
             return serveScore;
         }
 
@@ -26,8 +26,8 @@ namespace Tennis
             int scorePlayerTwo = 0;
 
             while (
-                  ((scorePlayerTwo < (scorePlayerOne + 20)) & scorePlayerTwo<=40) &
-                  ((scorePlayerOne < (scorePlayerTwo + 20) & scorePlayerOne <= 40))
+                  ((scorePlayerTwo < (scorePlayerOne + 20)) && scorePlayerTwo<=40) &&
+                  ((scorePlayerOne < (scorePlayerTwo + 20) && scorePlayerOne <= 40))
                    )
             {
                 if (Serve() == 1)
@@ -65,9 +65,9 @@ namespace Tennis
             int wonGamesPlayerTwo = 0;
 
             while (
-                (((wonGamesPlayerTwo < (wonGamesPlayerOne + 2)) & wonGamesPlayerTwo<=6) &
-                   ((wonGamesPlayerOne < (wonGamesPlayerTwo + 2)) & wonGamesPlayerOne <= 6)) &
-                   ((wonGamesPlayerTwo != 6) & (wonGamesPlayerOne != 6))
+                (((wonGamesPlayerTwo < (wonGamesPlayerOne + 2)) && wonGamesPlayerTwo<=6) &&
+                   ((wonGamesPlayerOne < (wonGamesPlayerTwo + 2)) && wonGamesPlayerOne <= 6)) &&
+                   ((wonGamesPlayerTwo != 6) && (wonGamesPlayerOne != 6))
                    )
             {
 
@@ -82,13 +82,13 @@ namespace Tennis
 
             }
 
-            if ((wonGamesPlayerTwo == 6) & (wonGamesPlayerOne == 6))
+            if ((wonGamesPlayerTwo == 6) && (wonGamesPlayerOne == 6))
             {
                 game = 0;
                 wonGamesPlayerOne = 0;
                 wonGamesPlayerTwo = 0;
 
-                while ((wonGamesPlayerTwo < (wonGamesPlayerOne + 2)) &
+                while ((wonGamesPlayerTwo < (wonGamesPlayerOne + 2)) &&
                        (wonGamesPlayerOne < (wonGamesPlayerTwo + 2)))
                 {
 
