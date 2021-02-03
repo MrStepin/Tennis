@@ -9,8 +9,8 @@ namespace Tennis
     class Match
     {
 
-        Player1 playerOne = new Player1();
-        Player2 playerTwo = new Player2();
+        Player playerOne = new Player();
+        Player playerTwo = new Player();
         Random randomNumber = new Random();
 
         public int Serve()
@@ -21,22 +21,30 @@ namespace Tennis
 
         public object Game()
         {
-            int serve = 10;
+            int serve = 15;
             int scorePlayerOne = 0;
             int scorePlayerTwo = 0;
 
             while (
-                  (scorePlayerTwo < (scorePlayerOne + 20)) |
-                  (scorePlayerOne < (scorePlayerTwo + 20))
+                  ((scorePlayerTwo < (scorePlayerOne + 20)) & scorePlayerTwo<=40) &
+                  ((scorePlayerOne < (scorePlayerTwo + 20) & scorePlayerOne <= 40))
                    )
             {
                 if (Serve() == 1)
                 {
-                    scorePlayerOne += playerTwo.WonServe(serve);
+                    if (scorePlayerOne >= 30)
+                    {
+                        serve = 10;
+                    }
+                    scorePlayerOne += playerOne.WonServe(serve);
                 }
                 else
                 {
-                    scorePlayerTwo += playerOne.WonServe(serve);
+                    if (scorePlayerTwo >= 30)
+                    {
+                        serve = 10;
+                    }
+                    scorePlayerTwo += playerTwo.WonServe(serve);
                 }
             }
 
@@ -50,15 +58,17 @@ namespace Tennis
             }
         }
 
-        public object Set()
+        public string Set()
         {
             int game = 0;
             int wonGamesPlayerOne = 0;
             int wonGamesPlayerTwo = 0;
 
-            while (((wonGamesPlayerTwo < (wonGamesPlayerOne + 2)) |
-                   (wonGamesPlayerOne < (wonGamesPlayerTwo + 2))) &
-                   ((wonGamesPlayerTwo != 6) & (wonGamesPlayerOne != 6)))
+            while (
+                (((wonGamesPlayerTwo < (wonGamesPlayerOne + 2)) & wonGamesPlayerTwo<=6) &
+                   ((wonGamesPlayerOne < (wonGamesPlayerTwo + 2)) & wonGamesPlayerOne <= 6)) &
+                   ((wonGamesPlayerTwo != 6) & (wonGamesPlayerOne != 6))
+                   )
             {
 
                 if (Game() == playerTwo)
@@ -78,7 +88,7 @@ namespace Tennis
                 wonGamesPlayerOne = 0;
                 wonGamesPlayerTwo = 0;
 
-                while ((wonGamesPlayerTwo < (wonGamesPlayerOne + 2)) |
+                while ((wonGamesPlayerTwo < (wonGamesPlayerOne + 2)) &
                        (wonGamesPlayerOne < (wonGamesPlayerTwo + 2)))
                 {
 
@@ -95,14 +105,17 @@ namespace Tennis
             }
             if (wonGamesPlayerTwo < wonGamesPlayerOne)
             {
-                return playerOne;
+                playerOne.Name = "First player";
+                return playerOne.Name;
             }
             else
-            { 
-                return playerTwo;
+            {
+                playerTwo.Name = "Second player";
+                return playerTwo.Name;
             }
 
         }
+
 
         
     }

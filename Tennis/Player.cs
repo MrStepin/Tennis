@@ -6,15 +6,30 @@ using System.Threading.Tasks;
 
 namespace Tennis
 {
-    class Player1
+    class Player
 
     {
+        private string name;
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+
 
         int value { get; set; }
 
         public int WonServe(int value)
         {
-            return value + 10;
+            return value += value;
             
         }
 
